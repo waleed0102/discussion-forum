@@ -5,12 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable
 
   has_many :comments
-  enum status: { qualified: 0, not_qualified: 1, banned: 2 }
+  enum status: [:qualified, :not_qualified, :banned ]
 
-  before_create :my_method
+  before_create :skip_confirmation_process
 
-  def my_method
-      self.skip_confirmation!
-      self.confirm
+  def skip_confirmation_process
+    self.skip_confirmation!
+    self.confirm
   end
 end
