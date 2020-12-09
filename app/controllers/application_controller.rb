@@ -1,14 +1,19 @@
 class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include Pundit
   skip_before_action :verify_authenticity_token
 
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # protected
+  protected
+  
+  def expert_authenticate
+    authorize current_user, :expert?
+  end
 
-  # def configure_permitted_parameters
-  #   byebug
-  #   added_attrs = [:status, :type, :email, :password, :password_confirmation]
-  #   devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-  # end
+  private
+
+  def user_not_authorized(exception)
+    "User not authorized"
+  end
 end
