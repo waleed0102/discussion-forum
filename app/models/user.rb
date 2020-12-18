@@ -7,5 +7,4 @@ class User < ApplicationRecord
 
   has_many :comments
   enum status: [:qualified, :not_qualified, :banned ]
-
 end
