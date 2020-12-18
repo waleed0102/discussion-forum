@@ -1,0 +1,15 @@
+<%= form_for(@campaign) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+    <br>
+    <%= f.label :purpose %>
+    <%= f.text_field :purpose, class: 'form-control' %>
+    <br>
+    <%= f.label :estimated_duration %>
+    <%= f.select(:estimated_duration, options_for_select([['Within 1 Week', 'within_1_week'], ['Within 1 Month', 
+        'within_1_month'], ['Within 3 Months', 'within_3_months']]), {}, {class: "form-control"}) %>
+    <br>
+    <%= f.submit 'Create Campaign', class: 'btn btn-success' %>
+  </div>
+<% end %>

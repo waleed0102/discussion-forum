@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Campaigns</h1>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Title</th>
+        <th class="text-center">Purpose</th>
+        <th class="text-center">Estimated Duration</th>
+        <th class="text-center">Created By</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @campaigns.each do |c| %>
+        <tr>
+          <td class="text-center"><%= c.title %></td>
+          <td class="text-center"><%= c.purpose %></td>
+          <td class="text-center"><%= c.estimated_duration %></td>
+          <td class="text-center"><%= c.expert.name %></td>
+          <td class="text-center">
+            <%= link_to "Show", campaign_path(c), class: 'btn btn-outline-primary'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if policy(Campaign).create? %>
+    <%= button_to "Create Campaign", new_campaign_path, method: :get, class: 'btn btn-success'%>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<%= form_for(@discussion_topic) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+     <%= f.hidden_field :campaign_id, value: @campaign_id %>
+    <br>
+    <%= f.submit 'Create DiscussionTopic', class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,16 +1,11 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   extend Devise::Models
-  include DeviseTokenAuth::Concerns::User
-
-  devise :database_authenticatable, :registerable, :validatable
 
   has_many :comments
   enum status: [:qualified, :not_qualified, :banned ]
 
-  before_create :skip_confirmation_process
-
-  def skip_confirmation_process
-    self.skip_confirmation!
-    self.confirm
-  end
 end

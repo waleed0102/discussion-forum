@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/" style="padding-left: 20px;">Welcome to Discussion-Forum</a>
+        <form class="form-inline" style="padding-right: 20px;">
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </form>
+      </nav>
+      <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

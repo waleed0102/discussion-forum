@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="text-center"><%= @discussion_topic.title %> </h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h3><span class="label label-danger"> Comments </span></h3>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Comment</th>
+        <th class="text-center">Commented_by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @discussion_topic.comments.each do |c| %>
+        <tr>
+          <td class="text-center"><%= c.title %></td>
+          <td class="text-center"><%= c.user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= form_with url: comments_path do |f| %>
+  <div class="form-group">
+    <%= f.label :add_comment %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.hidden_field :discussion_topic_id, value: @discussion_topic.id %>
+    <%= f.hidden_field :campaign, value: @discussion_topic.campaign.id %>
+    <br>
+    <%= f.submit %>
+  </div>
+  <% end %>
+  <div style="padding-top: 20px;">
+    <%= link_to 'Back', campaign_path(@discussion_topic.campaign.id), class: 'btn btn-primary'%>
+  </div>
+</div>
