@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tech Stack
+  - Ruby 2.7.0
+  - Rails 6.0.3.4
+  - Database Postresql
 
-Things you may want to cover:
+# Database Tables
+  - users
+    Holding information for expert and novice such as title, profession, status
 
-* Ruby version
+  - campaigns
+    Holding information for campaigns such as title, durtation etc
 
-* System dependencies
+  - discussion_topics
+    Holdimg information to store discussion data for campaigns
 
-* Configuration
+  - tags
+    Tags are here for campaigns
 
-* Database creation
+  - todos
+    Todo list is for campaigns
 
-* Database initialization
+  - comments
+    Comments are here for campaigns and discussion topics
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Setup Instructions
+  1- Clone the repo
+  2- bundle install
+  3- yarn install
+  4- bundle exec rake db:create db:migrate db:seed
+  5- rails s
+  6- Browse http://localhost:3000/

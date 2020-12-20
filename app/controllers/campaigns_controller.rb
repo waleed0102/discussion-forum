@@ -20,9 +20,9 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.save
-        format.html { redirect_to action: "index", notice: 'Post was successfully created.' }
+        format.html { redirect_to campaigns_path, notice: 'Post was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { render 'new', alert: "#{@campaign.errors.full_messages.join(', ')}" }
       end
     end
   end

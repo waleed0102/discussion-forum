@@ -26,14 +26,11 @@
       <% end %>
     </tbody>
   </table>
-  <%= form_with url: comments_path do |f| %>
+  <%= form_with url: campaign_discussion_topic_comments_path(@campaign, @discussion_topic) do |f| %>
   <div class="form-group">
-    <%= f.label :add_comment %><br>
-    <%= f.text_field :title, class: 'form-control' %>
-    <%= f.hidden_field :discussion_topic_id, value: @discussion_topic.id %>
-    <%= f.hidden_field :campaign, value: @discussion_topic.campaign.id %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Type your comment" %>
     <br>
-    <%= f.submit %>
+    <%= f.submit "Add Comment", class: 'btn btn-success', style: "margin-bottom: 20px;"%>
   </div>
   <% end %>
   <div style="padding-top: 20px;">

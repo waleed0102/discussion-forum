@@ -17,9 +17,8 @@
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
         </form>
       </nav>
-      <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% end %>
+    <%= flash_messages %>
     <%= yield %>
   </body>
 </html>

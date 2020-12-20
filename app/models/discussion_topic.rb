@@ -9,7 +9,7 @@ class DiscussionTopic < ApplicationRecord
     def ensure_discussion_topic_per_expert
       existing_campaigns_ids = campaign.expert.campaigns.ids - [campaign.id]
       if DiscussionTopic.where(user_id: self.user_id, campaign_id: existing_campaigns_ids).any?
-        errors.add(:discussion_topic, 'discussion topic cannot be created for this expert')
+        errors.add(:discussion_topic, 'cannot be created for this expert')
       end
     end
 end
