@@ -26,8 +26,13 @@
 
 # Setup Instructions
   1- Clone the repo
+  
   2- bundle install
+  
   3- yarn install
+  
   4- bundle exec rake db:create db:migrate db:seed
+  
   5- rails s
+  
   6- Browse http://localhost:3000/
